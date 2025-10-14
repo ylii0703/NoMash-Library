@@ -1,77 +1,77 @@
 <template>
-  <!-- Using Bootstrap's Header template (starter code) -->
-  <!-- https://getbootstrap.com/docs/5.0/examples/headers/ -->
   <div class="container">
-    <header class="d-flex justify-content-center py-3">
+    <header class="d-flex justify-content-between align-items-center py-3">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <router-link
-            to="/"
-            class="nav-link"
-            active-class="active"
-            aria-current="page"
-          >
-            Home (Week 5)
-          </router-link>
+          <router-link to="/" class="nav-link">Home (Week 8)</router-link>
         </li>
-
         <li class="nav-item">
-          <router-link
-            to="/about"
-            class="nav-link"
-            active-class="active"
-          >
-            About
-          </router-link>
+          <router-link to="/about" class="nav-link">About</router-link>
         </li>
-
         <li class="nav-item">
-          <router-link
-            to="/FireLogin"
-            class="nav-link"
-            active-class="active"
-          >
-            Firebase Login
-          </router-link>
+          <router-link to="/register" class="nav-link">Register</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/signin" class="nav-link">Sign in</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/Addbook" class="nav-link">Add book</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/GetBookCount" class="nav-link">Get book count</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/Weather" class="nav-link">Weather</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/GetAllBookAPI" class="nav-link">Get all book api</router-link>
         </li>
       </ul>
+
+      <div class="d-flex align-items-center gap-3">
+        <span v-if="user" class="text-muted small">Signed in: {{ user.email }}</span>
+        <button
+          v-if="user"
+          class="btn btn-outline-secondary btn-sm"
+          @click="logout"
+        >
+          Log out
+        </button>
+      </div>
     </header>
   </div>
 </template>
 
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'          // + add
+import { auth } from '@/firebase/init'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+
+const user = ref(null)
+const router = useRouter()                       // + add
+
+onMounted(() => {
+  onAuthStateChanged(auth, (u) => { user.value = u })
+})
+
+async function logout() {
+  try {
+    const prev = auth.currentUser?.email ?? ''   // + add
+    sessionStorage.setItem('lastEmail', prev)    // + add（备份到 sessionStorage）
+    await signOut(auth)
+    console.log('Signed out')
+    router.push({ path: '/logout', query: { prev } }) // + add: 跳到新页面显示提示
+  } catch (e) {
+    console.error(e)
+  }
+}
+</script>
+
 <style scoped>
-.b-example-divider {
-  height: 3rem;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: solid rgba(0, 0, 0, 0.15);
-  border-width: 1px 0;
-  box-shadow:
-    inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
-    inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
-}
-
-.form-control-dark {
+.nav-link.router-link-active,
+.nav-link.router-link-exact-active {
   color: #fff;
-  background-color: var(--bs-dark);
-  border-color: var(--bs-gray);
-}
-.form-control-dark:focus {
-  color: #fff;
-  background-color: var(--bs-dark);
-  border-color: #fff;
-  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
-}
-
-.bi {
-  vertical-align: -0.125em;
-  fill: currentColor;
-}
-
-.text-small {
-  font-size: 85%;
-}
-
-.dropdown-toggle {
-  outline: 0;
+  background-color: var(--bs-primary);
 }
 </style>
