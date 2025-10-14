@@ -34,19 +34,13 @@
 
     <!-- 2) Admin area -->
     <div v-else-if="stage === 'admin'">
-      <div>
-        <h1>Admin Dashboard</h1>
-        <p>Welcome, admin.</p>
-      </div>
+      <AdminPanel />
       <button class="btn btn-outline-secondary mt-3" @click="logout">Sign out</button>
     </div>
 
     <!-- 3) User area -->
     <div v-else-if="stage === 'user'">
-      <div>
-        <h1>User Home</h1>
-        <p>Welcome, user.</p>
-      </div>
+      <UserPanel />
       <button class="btn btn-outline-secondary mt-3" @click="logout">Sign out</button>
     </div>
   </div>
@@ -60,12 +54,16 @@ import { doc, getDoc } from 'firebase/firestore'
 
 const email = ref('')
 const password = ref('')
-const desiredRole = ref('user')      // 'user' | 'admin'
+const desiredRole = ref('user')      // optional: user chooses intended role
 const loading = ref(false)
 const errorMessage = ref('')
 const successMessage = ref('')
 
 const stage = ref('form')            // 'form' | 'admin' | 'user'
+
+// inline local components (same file)
+const AdminPanel = { template: `<div><h1>Admin Dashboard</h1><p>Welcome, admin.</p></div>` }
+const UserPanel  = { template: `<div><h1>User Home</h1><p>Welcome, user.</p></div>` }
 
 async function signin () {
   errorMessage.value = ''
@@ -87,7 +85,7 @@ async function signin () {
     }
     const storedRole = String(snap.data().role)
 
-    // enforce chosen role
+    // optional: enforce the chosen role
     if (desiredRole.value && storedRole !== desiredRole.value) {
       errorMessage.value = `Role mismatch: this account is "${storedRole}".`
       return
@@ -96,7 +94,7 @@ async function signin () {
     successMessage.value = `Sign in successful: ${user.email} (${storedRole})`
     localStorage.setItem('role', storedRole)
 
-    // switch section on the same page
+    // switch section in the same page
     stage.value = storedRole === 'admin' ? 'admin' : 'user'
   } catch (e) {
     errorMessage.value = `Sign in failed: ${e.code}`
@@ -109,6 +107,7 @@ async function signin () {
 async function logout () {
   await signOut(auth)
   localStorage.removeItem('role')
+  // reset back to form
   stage.value = 'form'
   email.value = ''
   password.value = ''
@@ -116,8 +115,5 @@ async function logout () {
   errorMessage.value = ''
 }
 </script>
-
- 
-
 
 
