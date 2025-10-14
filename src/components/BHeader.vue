@@ -3,7 +3,7 @@
     <header class="d-flex justify-content-between align-items-center py-3">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <router-link to="/" class="nav-link">Home (Week 8)</router-link>
+          <router-link to="/" class="nav-link">Home (Week 12)</router-link>
         </li>
         <li class="nav-item">
           <router-link to="/about" class="nav-link">About</router-link>
@@ -15,16 +15,16 @@
           <router-link to="/signin" class="nav-link">Sign in</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/Addbook" class="nav-link">Add book</router-link>
+          <router-link to="/addbook" class="nav-link">Add book</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/GetBookCount" class="nav-link">Get book count</router-link>
+          <router-link to="/getbookcount" class="nav-link">Get book count</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/Weather" class="nav-link">Weather</router-link>
+          <router-link to="/weather" class="nav-link">Weather</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/GetAllBookAPI" class="nav-link">Get all book api</router-link>
+          <router-link to="/getallbookAPI" class="nav-link">Get all book api</router-link>
         </li>
       </ul>
 

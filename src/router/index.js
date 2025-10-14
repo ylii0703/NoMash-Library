@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
+
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import FirebaseLogoutView from '../views/FirebaseLogoutView.vue'
 import AddBookView from '@/views/AddBookView.vue'
-import GetBookCountView from '@/views/GetAllBookAPI.vue'
+import GetBookCountView from '@/views/GetBookCountView.vue'
 import WeatherView from '@/views/WeatherView.vue'
 import GetAllBookAPI from '@/views/GetAllBookAPI.vue'
 
