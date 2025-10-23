@@ -48,7 +48,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { auth, db } from '@/firebase/init'
+import { auth, db } from '../firebase/init'
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
 

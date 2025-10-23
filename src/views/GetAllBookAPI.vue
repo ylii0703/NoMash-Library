@@ -1,4 +1,4 @@
-<!-- src/views/GetAllBookAPI.vue -->
+
 <template>
   <div class="container mt-5">
     <h1 class="text-center">Get All Books API</h1>

@@ -19,7 +19,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { auth } from '@/firebase/init'
+import { auth } from '../firebase/init'
 
 const route = useRoute()
 const prevEmail = ref(null)

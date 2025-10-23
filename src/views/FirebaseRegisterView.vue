@@ -161,8 +161,8 @@
 import { ref, computed } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import { auth } from '@/firebase/init'
-import db from '@/firebase/init'
+import { auth } from '../firebase/init'
+import db from '../firebase/init'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
 

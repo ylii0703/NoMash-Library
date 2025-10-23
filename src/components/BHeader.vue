@@ -45,7 +45,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'          
-import { auth } from '@/firebase/init'
+import { auth } from '../firebase/init'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 const user = ref(null)
