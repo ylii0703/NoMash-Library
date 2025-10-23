@@ -32,5 +32,11 @@ jobs:
         branch: gh-pages
         folder: dist
 
+    - name: SPA 404 fallback
+       run: cp dist/index.html dist/404.html
+
+    - name: Disable Jekyll
+      run: touch dist/.nojekyll
+
 permissions:
   contents: write
