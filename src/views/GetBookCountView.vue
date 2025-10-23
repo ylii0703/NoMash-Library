@@ -11,7 +11,7 @@
 
 <script>
 import axios from 'axios'
-const COUNT_API_URL = 'https://countbooks-yo2a5domnq-uc.a.run.app'  // ←替换成 countBooks 的 URL
+const COUNT_API_URL = 'https://countbooks-yo2a5domnq-uc.a.run.app'  
 
 export default {
   name: 'GetBookCountView',
