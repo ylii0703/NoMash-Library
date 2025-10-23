@@ -44,12 +44,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'          // + add
+import { useRouter } from 'vue-router'          
 import { auth } from '@/firebase/init'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 const user = ref(null)
-const router = useRouter()                       // + add
+const router = useRouter()                       
 
 onMounted(() => {
   onAuthStateChanged(auth, (u) => { user.value = u })
@@ -57,11 +57,11 @@ onMounted(() => {
 
 async function logout() {
   try {
-    const prev = auth.currentUser?.email ?? ''   // + add
-    sessionStorage.setItem('lastEmail', prev)    // + add（备份到 sessionStorage）
+    const prev = auth.currentUser?.email ?? ''   
+    sessionStorage.setItem('lastEmail', prev)    
     await signOut(auth)
     console.log('Signed out')
-    router.push({ path: '/logout', query: { prev } }) // + add: 跳到新页面显示提示
+    router.push({ path: '/logout', query: { prev } }) 
   } catch (e) {
     console.error(e)
   }
