@@ -26,6 +26,12 @@
         <li class="nav-item">
           <router-link to="/getallbookAPI" class="nav-link">Get all book api</router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/myname" class="nav-link">My name</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/jsonlab" class="nav-link">JsonLab</router-link>
+        </li>
       </ul>
 
       <div class="d-flex align-items-center gap-3">

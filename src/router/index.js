@@ -10,6 +10,8 @@ import AddBookView from '../views/AddBookView.vue'
 import GetBookCountView from '../views/GetBookCountView.vue'
 import WeatherView from '../views/WeatherView.vue'
 import GetAllBookAPI from '../views/GetAllBookAPI.vue'
+import MyNameView from '../views/MyNameView.vue'
+import JsonLabView from '../views/JsonLabView.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -21,6 +23,8 @@ const routes = [
   { path: '/getbookcount', name: 'getbookcount', component: GetBookCountView },
   { path: '/weather', name: 'weather', component: WeatherView },
   { path: '/getallbookapi', name: 'getallbookapi', component: GetAllBookAPI },
+  { path: '/myname', name: 'myname', component: MyNameView },
+  { path: '/jsonlab', name: 'jsonlab', component: JsonLabView },
 ]
 
 const router = createRouter({
