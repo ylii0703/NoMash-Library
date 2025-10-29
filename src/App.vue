@@ -1,5 +1,6 @@
 <script setup>
 import BHeader from './components/BHeader.vue'
+import Form from './components/Form.vue'
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import BHeader from './components/BHeader.vue'
 
   <main class="app-container">
     <router-view />
+    <Form />
   </main>
 </template>
 

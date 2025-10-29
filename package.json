@@ -1,11 +1,12 @@
-
 {
   "name": "nomash-library",
   "version": "0.0.0",
   "main": "index.js",
   "private": true,
   "type": "commonjs",
-  "engines": { "node": "22" },
+  "engines": {
+    "node": "22"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -18,7 +19,7 @@
   "dependencies": {
     "@primevue/themes": "^4.0.4",
     "axios": "^1.12.2",
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^5.3.8",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "firebase": "^12.3.0",
